@@ -1,9 +1,18 @@
 import  {MockData}  from "./db";
 import fastify, {RequestGenericInterface} from "fastify";
+import fastifyHttpProxy from "@fastify/http-proxy";
+import dotenv from 'dotenv';
+
+import { GetGHProxyOptions } from "./proxy";
+
 import cors from '@fastify/cors';
 
+dotenv.config();
 
 const server = fastify()
+
+let proxyOpts = GetGHProxyOptions(process.env.GH_ACCESS_TOKEN)
+server.register(fastifyHttpProxy, proxyOpts)
 
 //setup CORS - this will be necessary for API requests from a VUE or any SPA app 
 server.register(cors, {
