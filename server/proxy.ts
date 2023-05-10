@@ -1,7 +1,7 @@
 import { FastifyHttpProxyOptions } from '@fastify/http-proxy'; 
 
 
-export function GetGHProxyOptions(GHAccessToken: string | undefined) : FastifyHttpProxyOptions {
+export function GetGHProxySecureOptions(GHAccessToken: string | undefined) : FastifyHttpProxyOptions {
     return {
         upstream: 'https://api.github.com',
         prefix: 'ghsecure', 
@@ -10,10 +10,18 @@ export function GetGHProxyOptions(GHAccessToken: string | undefined) : FastifyHt
             rewriteRequestHeaders: (origReq, headers) => {
                 return {
                     ...headers,
-                    authorization: `Token ${GHAccessToken}`
+                    authorization: `Bearer ${GHAccessToken}`
                 }
             } 
         } 
+    }
+}
+
+export function GetGHProxyOptions() : FastifyHttpProxyOptions {
+    return {
+        upstream: 'https://api.github.com',
+        prefix: 'ghproxy', 
+        httpMethods: ['GET', 'POST']
     }
 }
 
