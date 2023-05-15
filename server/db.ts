@@ -14,5 +14,10 @@ export const MockData = [
         studentId: "789",
         studentName: "Tim Doe",
         courseId: "se577"
-    }    
+    },
+    {
+        studentId: "abc",
+        studentName: "Jim Doe",
+        courseId: "cs544"
+    }     
 ];
