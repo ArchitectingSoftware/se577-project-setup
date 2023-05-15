@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "simple server",
   "main": "server.ts",
-  "author": "brian mitchell",
+  "author": "brian mitchell, drexel cci",
   "license": "MIT",
   "scripts": {
     "server": "nodemon  server.ts"
