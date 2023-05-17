@@ -4,6 +4,7 @@
   "description": "A Quasar Project",
   "productName": "Quasar App",
   "author": "Brian Mitchell <dr.brian.mitchell@gmail.com>",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",

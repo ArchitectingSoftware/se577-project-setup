@@ -6,7 +6,9 @@
   "author": "brian mitchell",
   "license": "MIT",
   "scripts": {
-    "server": "nodemon  server.ts"
+    "build": "tsc -p tsconfig.json",
+    "server": "nodemon  server.ts",
+    "start": "node  server.js"
   },
   "dependencies": {
     "@fastify/cors": "^8.2.1",

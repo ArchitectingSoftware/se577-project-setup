@@ -88,7 +88,9 @@ server.get<requestQry>('/search', async (request, reply) => {
     }
   })
 
-server.listen({ port: 9500 }, (err, address) => {
+
+
+server.listen({ port: 9500, host: "::" }, (err, address) => {
   if (err) {
     console.error(err)
     process.exit(1)
