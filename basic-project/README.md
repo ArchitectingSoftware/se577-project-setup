@@ -1,20 +1,6 @@
-# basic-project
+# vue-project
 
 This template should help get you started developing with Vue 3 in Vite.
-
-## After Setup
-
-You can use this project as your base, or modify the scaffolded one created by the vue tooling.  What I did was as follows:
-
-1. Create a /pages directory under src
-2. You can use the template I created called `TemplatePage.vue` to create some other pages,
-in this demo I just created FirstPage.vue, SecondPage.vue, ThirdPage.vue, check them out
-4. Notice the changes I made in `index.ts` under the router directory
-3. I also messed with main.css and base.css to make things a little cleaner
-4. Notice page-specific styling on Page2
-
-Remember to run `yarn dev`
-
 
 ## Recommended IDE Setup
 
@@ -38,17 +24,17 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 ## Project Setup
 
 ```sh
-yarn
+npm install
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-yarn dev
+npm run dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-yarn build
+npm run build
 ```
