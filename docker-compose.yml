@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  frontend:
+    image: "architecting-software/demo-api-fastify"
+    ports:
+         - "9550:80"
+  webservice:
+    image: "architecting-software/demo-api-fastify"
+    ports:
+        - "9500:9500"
+  

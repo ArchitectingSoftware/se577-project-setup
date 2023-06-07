@@ -3,7 +3,8 @@ import fastify, {RequestGenericInterface} from "fastify";
 import fastifyHttpProxy from "@fastify/http-proxy";
 import dotenv from 'dotenv';
 
-import {GetGHProxySecureOptions, GetGHProxyOptions } from "./proxy";
+import {GetGHProxySecureOptions, 
+  GetGHProxyOptions, InjectAuthQueryOption } from "./proxy";
 
 import cors from '@fastify/cors';
 
@@ -16,6 +17,9 @@ server.register(fastifyHttpProxy, proxyOptsSecure)
 
 let proxyOpts = GetGHProxyOptions()
 server.register(fastifyHttpProxy, proxyOpts)
+
+let queryInjector = InjectAuthQueryOption(process.env.GH_ACCESS_TOKEN)
+server.register(fastifyHttpProxy, queryInjector)
 
 //setup CORS - this will be necessary for API requests from a VUE or any SPA app 
 server.register(cors, {
@@ -88,6 +92,14 @@ server.get<requestQry>('/search', async (request, reply) => {
     }
   })
 
+  server.get('/qotest', async(req, reply) =>{
+    let rsp = {
+      data: req.query
+    }
+    reply.code(200).send(rsp);
+    return
+
+  })
 
 
 server.listen({ port: 9500, host: "::" }, (err, address) => {

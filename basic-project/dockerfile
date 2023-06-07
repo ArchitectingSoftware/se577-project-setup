@@ -1,0 +1,29 @@
+# Use the official Node.js image as the base
+FROM node as build
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Build the Vue 3 TypeScript application
+RUN npm run build
+
+# Use a smaller base image for the final production image
+FROM nginx
+
+# Copy the built application from the previous stage
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Expose the default Nginx port
+EXPOSE 80
+
+# Start Nginx when the container starts
+CMD ["nginx", "-g", "daemon off;"]

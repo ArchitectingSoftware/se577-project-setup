@@ -1,0 +1,11 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY package*.json ./build .env ./ 
+
+RUN npm install && npm audit fix && npm cache clean --force
+
+EXPOSE 9500
+
+CMD ["npm", "start"]
